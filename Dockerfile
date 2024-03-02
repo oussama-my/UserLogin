@@ -1,18 +1,13 @@
+FROM node:latest
 
-FROM node:20
+WORKDIR /usr/src/app 
 
-# Set working directory
-WORKDIR /app
-
-COPY package.json ./
+COPY package*.json ./ 
 
 RUN npm install
 
-COPY . .
+COPY . . 
 
-WORKDIR /app
+EXPOSE 8080
 
-EXPOSE 3000
-
-# Start command (replace "npm start" with your actual start command)
-CMD ["npm", "server.js"]
+CMD [ "node", "server.js" ]
